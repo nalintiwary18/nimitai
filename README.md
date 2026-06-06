@@ -1,51 +1,53 @@
 # Sales Signal Analyzer
 
-A simple, premium Next.js web application that detects conversation signals (buying interest, objections, confusion, and other) from meeting transcripts, returning immediate, actionable coaching tips for sales representatives.
+A Next.js web application that detects conversation signals from meeting transcripts — buying interest, objections, confusion, and more — and returns actionable coaching tips for sales representatives.
 
 ---
 
-## 🤖 LLM Details
-- **LLM Provider**: [Groq](https://groq.com/)
-- **Model Used**: `llama-3.3-70b-versatile` (configured via LangChain `@langchain/groq`)
-- **Structure Enforcement**: LangChain's `.withStructuredOutput()` combined with a `zod` schema to guarantee clean JSON outputs.
+## LLM Details
+
+- **Provider:** [Groq](https://groq.com/)
+- **Model:** `llama-3.3-70b-versatile` via LangChain's `@langchain/groq`
+- **Output structure:** LangChain's `.withStructuredOutput()` paired with a Zod schema to enforce clean, consistent JSON responses
 
 ---
 
-## 🚀 Setup Steps
+## Setup
 
-### 1. Prerequisites
-Ensure you have the following installed on your machine:
-- [Node.js](https://nodejs.org/) (v18.x or newer, v22.x recommended)
-- `npm` (usually comes with Node.js)
+### Prerequisites
 
-### 2. Set Up Environment Variables
-Create a `.env.local` file in the root directory if it does not already exist:
+You'll need Node.js v18 or newer installed (v22 recommended), along with npm.
+
+### Environment variables
+
+Create a `.env.local` file in the project root:
+
 ```bash
-cp .env.example .env.local  # Or create it manually
+cp .env.example .env.local
 ```
 
-Add your Groq API Key:
+Then add your Groq API key:
+
 ```env
 GROQ_API_KEY=your_groq_api_key_here
 ```
-*You can get a free API key by visiting the [Groq Console](https://console.groq.com/).*
 
-### 3. Install Dependencies
-Run the following command in the root folder to install all required packages:
+### Install dependencies
+
 ```bash
 npm install
 ```
 
-### 4. Run the Development Server
-Launch the local development server:
+### Run the development server
+
 ```bash
 npm run dev
 ```
 
-Open your browser and navigate to **[http://localhost:3000](http://localhost:3000)**.
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### 5. Build for Production (Optional)
-To verify or compile a production bundle:
+### Production build (optional)
+
 ```bash
 npm run build
 npm start
@@ -53,9 +55,10 @@ npm start
 
 ---
 
-## 🛠️ Technology Stack
-- **Frontend**: Next.js App Router (React 19)
-- **Backend API**: Next.js Route Handlers (`POST /analyse`)
-- **Orchestration**: LangChain (`@langchain/core` & `@langchain/groq`)
-- **Validation**: Zod
-- **Styling**: Premium Vanilla CSS (custom variables, glassmorphic layout, micro-animations, no Tailwind)
+## Tech Stack
+
+- **Frontend:** Next.js App Router with React 19
+- **Backend:** Next.js Route Handlers — a single `POST /analyse` endpoint
+- **Orchestration:** LangChain (`@langchain/core` and `@langchain/groq`)
+- **Validation:** Zod
+- **Styling:** Custom vanilla CSS — CSS variables, glassmorphic layout, micro-animations, no Tailwind
