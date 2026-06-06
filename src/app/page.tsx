@@ -52,8 +52,9 @@ export default function Home() {
 
       setSignals(data.signals || []);
       setHasAnalyzed(true);
-    } catch (err: any) {
-      setError(err.message || "An unexpected error occurred.");
+    } catch (err: unknown) {
+      const errMsg = err instanceof Error ? err.message : "An unexpected error occurred.";
+      setError(errMsg);
       setHasAnalyzed(false);
     } finally {
       setLoading(false);
@@ -62,7 +63,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
-      {/* SaaS App Header */}
       <header className="border-b border-slate-200 bg-white sticky top-0 z-10 shadow-xs">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
