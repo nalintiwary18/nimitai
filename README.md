@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sales Signal Analyzer
 
-## Getting Started
+A simple, premium Next.js web application that detects conversation signals (buying interest, objections, confusion, and other) from meeting transcripts, returning immediate, actionable coaching tips for sales representatives.
 
-First, run the development server:
+---
 
+## 🤖 LLM Details
+- **LLM Provider**: [Groq](https://groq.com/)
+- **Model Used**: `llama-3.3-70b-versatile` (configured via LangChain `@langchain/groq`)
+- **Structure Enforcement**: LangChain's `.withStructuredOutput()` combined with a `zod` schema to guarantee clean JSON outputs.
+
+---
+
+## 🚀 Setup Steps
+
+### 1. Prerequisites
+Ensure you have the following installed on your machine:
+- [Node.js](https://nodejs.org/) (v18.x or newer, v22.x recommended)
+- `npm` (usually comes with Node.js)
+
+### 2. Set Up Environment Variables
+Create a `.env.local` file in the root directory if it does not already exist:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+cp .env.example .env.local  # Or create it manually
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Add your Groq API Key:
+```env
+GROQ_API_KEY=your_groq_api_key_here
+```
+*You can get a free API key by visiting the [Groq Console](https://console.groq.com/).*
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Install Dependencies
+Run the following command in the root folder to install all required packages:
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Run the Development Server
+Launch the local development server:
+```bash
+npm run dev
+```
 
-## Learn More
+Open your browser and navigate to **[http://localhost:3000](http://localhost:3000)**.
 
-To learn more about Next.js, take a look at the following resources:
+### 5. Build for Production (Optional)
+To verify or compile a production bundle:
+```bash
+npm run build
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠️ Technology Stack
+- **Frontend**: Next.js App Router (React 19)
+- **Backend API**: Next.js Route Handlers (`POST /analyse`)
+- **Orchestration**: LangChain (`@langchain/core` & `@langchain/groq`)
+- **Validation**: Zod
+- **Styling**: Premium Vanilla CSS (custom variables, glassmorphic layout, micro-animations, no Tailwind)
