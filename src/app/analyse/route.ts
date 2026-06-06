@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
     const model = new ChatGroq({
       apiKey: groqApiKey,
       model: "llama-3.3-70b-versatile",
-      temperature: 0,
+      temperature: 2,
     });
 
     // Use withStructuredOutput to get back parsed JSON matching our Zod schema
